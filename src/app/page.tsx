@@ -299,7 +299,7 @@ export default function Home() {
                       <Avatar className="mb-4 h-20 w-20">
                         <AvatarImage
                           src={testimonial.avatarUrl}
-                          alt={testimonial.name}
+                          alt={`Foto de perfil de ${testimonial.name}`}
                           data-ai-hint={testimonial.avatarHint}
                         />
                         <AvatarFallback>
