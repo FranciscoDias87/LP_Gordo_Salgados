@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import menuData from '@/lib/menu.json';
-import { Gem, Rocket, Star, Zap } from 'lucide-react';
+import { Gem, PartyPopper, Rocket, Star, Zap } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   Carousel,
@@ -159,6 +159,39 @@ export default function Home() {
             </TabsContent>
           ))}
         </Tabs>
+      </section>
+
+      <section id="kits-festa" className="container py-16">
+        <div className="rounded-2xl border-4 border-primary bg-primary/5 p-8 text-center shadow-lg md:p-12">
+          <div className="mx-auto mb-4 inline-block rounded-full bg-primary/10 p-4">
+            <PartyPopper className="size-10 text-primary" />
+          </div>
+          <h2 className="mb-4 font-headline text-4xl font-bold">
+            Kits para sua Festa!
+          </h2>
+          <p className="mx-auto mb-8 max-w-3xl text-lg text-foreground/80">
+            Leve o sabor inconfundível da Gordo Salgados para o seu evento.
+            Temos opções de kits com centos de salgados que vão surpreender
+            seus convidados. Entre em contato para um orçamento personalizado!
+          </p>
+          <Button asChild size="lg" variant="secondary" className="text-lg">
+            <Link
+              href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20um%20Kit%20Festa."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-2 h-6 w-6"
+              >
+                <path d="M16.6 14.2c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.7-.8.9-.1.1-.3.1-.5 0-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6s0-.3.1-.4c.1-.1.2-.2.4-.4.1-.1.2-.2.2-.4.1-.1 0-.3-.1-.4-.1-.1-1.2-2.8-1.6-3.8-.4-.9-.8-1-.8-1s-.3-.1-.5-.1h-.5c-.2 0-.5.1-.8.4-.2.2-.8.8-.8 1.9s.9 2.2 1 2.4c.1.1 1.6 2.4 3.8 3.4.6.2.9.4 1.2.5.5.2.9.1 1.2-.1.4-.2.8-.9.9-1.1.1-.2.1-.4 0-.5s-.2-.2-.4-.4zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" />
+              </svg>
+              Solicitar Orçamento via WhatsApp
+            </Link>
+          </Button>
+        </div>
       </section>
 
       <section id="porque-nos" className="bg-muted/50 py-16 sm:py-24">
