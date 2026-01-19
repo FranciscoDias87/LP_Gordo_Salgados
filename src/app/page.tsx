@@ -88,7 +88,10 @@ export default function Home() {
         id="hero"
         className="container grid grid-cols-1 items-center gap-8 py-16 md:grid-cols-2 md:py-24"
       >
-        <div className="flex flex-col items-start gap-6">
+        <div
+          className="flex animate-fade-in-up flex-col items-start gap-6 opacity-0"
+          style={{ animationDelay: '0.2s' }}
+        >
           <h1 className="font-headline text-5xl font-bold leading-tight md:text-6xl">
             O sabor que abraça o seu coração
           </h1>
@@ -107,7 +110,10 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-        <div className="relative h-80 w-full overflow-hidden rounded-2xl shadow-2xl md:h-[450px]">
+        <div
+          className="relative h-80 w-full animate-fade-in-up overflow-hidden rounded-2xl shadow-2xl opacity-0 md:h-[450px]"
+          style={{ animationDelay: '0.4s' }}
+        >
           {heroImage && (
             <Image
               src={heroImage.imageUrl}
@@ -121,7 +127,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="cardapio" className="container py-16">
+      <section
+        id="cardapio"
+        className="container animate-fade-in-up py-16 opacity-0"
+        style={{ animationDelay: '0.5s' }}
+      >
         <h2 className="text-center font-headline text-4xl font-bold">
           Cardápio
         </h2>
@@ -188,7 +198,11 @@ export default function Home() {
         </Tabs>
       </section>
 
-      <section id="kits-festa" className="container py-16">
+      <section
+        id="kits-festa"
+        className="container animate-fade-in-up py-16 opacity-0"
+        style={{ animationDelay: '0.6s' }}
+      >
         <div className="rounded-2xl border-4 border-primary bg-primary/5 p-8 text-center shadow-lg md:p-12">
           <div className="mx-auto mb-4 inline-block rounded-full bg-primary/10 p-4">
             <PartyPopper className="size-10 text-primary" />
@@ -214,7 +228,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="porque-nos" className="bg-muted/50 py-16 sm:py-24">
+      <section
+        id="porque-nos"
+        className="animate-fade-in-up bg-muted/50 py-16 opacity-0 sm:py-24"
+        style={{ animationDelay: '0.7s' }}
+      >
         <div className="container">
           <h2 className="text-center font-headline text-4xl font-bold">
             Por que escolher a Gordo Salgados?
@@ -254,7 +272,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="depoimentos" className="container py-16 sm:py-24">
+      <section
+        id="depoimentos"
+        className="container animate-fade-in-up py-16 opacity-0 sm:py-24"
+        style={{ animationDelay: '0.8s' }}
+      >
         <h2 className="text-center font-headline text-4xl font-bold">
           O que nossos clientes dizem
         </h2>
@@ -311,7 +333,11 @@ export default function Home() {
         </Carousel>
       </section>
 
-      <section id="localizacao" className="container py-16">
+      <section
+        id="localizacao"
+        className="container animate-fade-in-up py-16 opacity-0"
+        style={{ animationDelay: '0.9s' }}
+      >
         <h2 className="text-center font-headline text-4xl font-bold">
           Onde Estamos
         </h2>
@@ -331,7 +357,11 @@ export default function Home() {
           ></iframe>
         </div>
       </section>
-      <section id="contato" className="container py-16 sm:py-24">
+      <section
+        id="contato"
+        className="container animate-fade-in-up py-16 opacity-0 sm:py-24"
+        style={{ animationDelay: '1.0s' }}
+      >
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="font-headline text-4xl font-bold">
             Entre em Contato
