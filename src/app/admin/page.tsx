@@ -1,38 +1,77 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { mockProducts } from '@/lib/mock-data';
+import { getProducts } from '@/lib/mock-data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ShoppingBag, TrendingUp, Users, DollarSign } from 'lucide-react';
 
 export default function AdminDashboard() {
-  const totalProducts = mockProducts.length;
-  const activeProducts = mockProducts.filter(p => p.status === 'active').length;
-  const totalRevenue = mockProducts.reduce((sum, p) => sum + p.price, 0);
+  const [stats, setStats] = useState({
+    totalProducts: 0,
+    activeProducts: 0,
+    totalRevenue: 0,
+    customers: 150
+  });
+  const [recentProducts, setRecentProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stats = [
+  useEffect(() => {
+    loadDashboardData();
+  }, []);
+
+  const loadDashboardData = async () => {
+    try {
+      const products = await getProducts();
+      const activeProducts = products.filter(p => p.status === 'active');
+      const totalRevenue = products.reduce((sum, p) => sum + p.price, 0);
+
+      setStats({
+        totalProducts: products.length,
+        activeProducts: activeProducts.length,
+        totalRevenue,
+        customers: 150 // Mock data
+      });
+
+      setRecentProducts(products.slice(0, 3));
+    } catch (error) {
+      console.error('Erro ao carregar dados do dashboard:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="text-gray-500">Carregando dashboard...</div>
+      </div>
+    );
+  }
+
+  const statCards = [
     {
       title: 'Total de Produtos',
-      value: totalProducts,
+      value: stats.totalProducts,
       icon: ShoppingBag,
       color: 'text-blue-600',
     },
     {
       title: 'Produtos Ativos',
-      value: activeProducts,
+      value: stats.activeProducts,
       icon: TrendingUp,
       color: 'text-green-600',
     },
     {
       title: 'Receita Potencial',
-      value: `R$ ${totalRevenue.toFixed(2)}`,
+      value: `R$ ${stats.totalRevenue.toFixed(2)}`,
       icon: DollarSign,
       color: 'text-yellow-600',
     },
     {
       title: 'Clientes',
-      value: '150+', // Mock data
+      value: `${stats.customers}+`,
       icon: Users,
       color: 'text-purple-600',
     },
@@ -46,7 +85,7 @@ export default function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, index) => (
+        {statCards.map((stat, index) => (
           <Card key={index}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
@@ -88,7 +127,7 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {mockProducts.slice(0, 3).map((product) => (
+              {recentProducts.map((product) => (
                 <div key={product.id} className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium">{product.name}</p>
@@ -106,6 +145,9 @@ export default function AdminDashboard() {
                   </div>
                 </div>
               ))}
+              {recentProducts.length === 0 && (
+                <p className="text-gray-500 text-sm">Nenhum produto cadastrado ainda.</p>
+              )}
             </div>
           </CardContent>
         </Card>

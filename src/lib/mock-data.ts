@@ -1,11 +1,8 @@
-export interface Product {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  status: 'active' | 'inactive';
-}
+import { productService, Product } from './supabase'
 
+export type { Product }
+
+// Dados mock para fallback
 export const mockProducts: Product[] = [
   {
     id: 1,
@@ -29,3 +26,13 @@ export const mockProducts: Product[] = [
     status: 'inactive'
   }
 ];
+
+// Função para obter produtos (do Supabase ou mock)
+export async function getProducts(): Promise<Product[]> {
+  try {
+    return await productService.getAll()
+  } catch (error) {
+    console.warn('Erro ao carregar produtos do Supabase, usando dados mock:', error)
+    return mockProducts
+  }
+}

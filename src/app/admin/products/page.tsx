@@ -1,33 +1,70 @@
 'use client';
 
-import { useState } from 'react';
-import { mockProducts, Product } from '../../../lib/mock-data';
+import { useState, useEffect } from 'react';
+import { getProducts, Product } from '../../../lib/mock-data';
+import { productService } from '../../../lib/supabase';
 import { ProductForm } from '../../../components/admin/product-form';
 import { Button } from '@/components/ui/button';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>(mockProducts);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleAddProduct = (newProduct: Omit<Product, 'id'>) => {
-    const product: Product = {
-      ...newProduct,
-      id: Math.max(...products.map(p => p.id)) + 1,
-    };
-    setProducts([...products, product]);
-  };
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
-  const handleUpdateProduct = (updatedProduct: Omit<Product, 'id'>, id: number) => {
-    setProducts(products.map(p =>
-      p.id === id ? { ...updatedProduct, id } : p
-    ));
-  };
-
-  const handleDelete = (id: number) => {
-    if (confirm('Tem certeza que deseja excluir este produto?')) {
-      setProducts(products.filter(p => p.id !== id));
+  const loadProducts = async () => {
+    try {
+      const data = await getProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error('Erro ao carregar produtos:', error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  const handleAddProduct = async (newProduct: Omit<Product, 'id'>) => {
+    try {
+      const created = await productService.create(newProduct);
+      setProducts([created, ...products]);
+    } catch (error) {
+      console.error('Erro ao criar produto:', error);
+      alert('Erro ao criar produto. Tente novamente.');
+    }
+  };
+
+  const handleUpdateProduct = async (updatedProduct: Omit<Product, 'id'>, id: number) => {
+    try {
+      const updated = await productService.update(id, updatedProduct);
+      setProducts(products.map(p => p.id === id ? updated : p));
+    } catch (error) {
+      console.error('Erro ao atualizar produto:', error);
+      alert('Erro ao atualizar produto. Tente novamente.');
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    if (!confirm('Tem certeza que deseja excluir este produto?')) return;
+
+    try {
+      await productService.delete(id);
+      setProducts(products.filter(p => p.id !== id));
+    } catch (error) {
+      console.error('Erro ao excluir produto:', error);
+      alert('Erro ao excluir produto. Tente novamente.');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="text-gray-500">Carregando produtos...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
