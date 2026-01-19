@@ -18,6 +18,7 @@ export interface Product {
 // Funções para CRUD de produtos
 export const productService = {
   async getAll() {
+    console.log('🔍 Buscando todos os produtos no Supabase...');
     const { data, error } = await supabase
       .from('products')
       .select('*')
@@ -28,6 +29,7 @@ export const productService = {
   },
 
   async create(product: Omit<Product, 'id' | 'created_at' | 'updated_at'>) {
+    console.log('➕ Criando produto no Supabase:', product.name);
     const { data, error } = await supabase
       .from('products')
       .insert([product])
@@ -35,10 +37,12 @@ export const productService = {
       .single()
 
     if (error) throw error
+    console.log('✅ Produto criado com sucesso:', data.id);
     return data as Product
   },
 
   async update(id: number, updates: Partial<Omit<Product, 'id' | 'created_at' | 'updated_at'>>) {
+    console.log('✏️ Atualizando produto no Supabase:', id, updates);
     const { data, error } = await supabase
       .from('products')
       .update({ ...updates, updated_at: new Date().toISOString() })
@@ -47,15 +51,18 @@ export const productService = {
       .single()
 
     if (error) throw error
+    console.log('✅ Produto atualizado com sucesso');
     return data as Product
   },
 
   async delete(id: number) {
+    console.log('🗑️ Excluindo produto no Supabase:', id);
     const { error } = await supabase
       .from('products')
       .delete()
       .eq('id', id)
 
     if (error) throw error
+    console.log('✅ Produto excluído com sucesso');
   }
 }

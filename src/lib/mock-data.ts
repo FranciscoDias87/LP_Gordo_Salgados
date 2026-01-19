@@ -30,9 +30,13 @@ export const mockProducts: Product[] = [
 // Função para obter produtos (do Supabase ou mock)
 export async function getProducts(): Promise<Product[]> {
   try {
-    return await productService.getAll()
+    console.log('🔄 Tentando carregar produtos do Supabase...');
+    const products = await productService.getAll();
+    console.log('✅ Produtos carregados do Supabase:', products.length, 'produtos encontrados');
+    return products;
   } catch (error) {
-    console.warn('Erro ao carregar produtos do Supabase, usando dados mock:', error)
-    return mockProducts
+    console.warn('⚠️ Erro ao carregar produtos do Supabase, usando dados mock:', error);
+    console.log('📦 Usando dados mock como fallback');
+    return mockProducts;
   }
 }

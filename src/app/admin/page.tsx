@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { getProducts } from '@/lib/mock-data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ShoppingBag, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { ShoppingBag, TrendingUp, Users, DollarSign, Database, CheckCircle, XCircle } from 'lucide-react';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -16,6 +16,7 @@ export default function AdminDashboard() {
   });
   const [recentProducts, setRecentProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [dbStatus, setDbStatus] = useState<'checking' | 'connected' | 'fallback'>('checking');
 
   useEffect(() => {
     loadDashboardData();
@@ -23,7 +24,17 @@ export default function AdminDashboard() {
 
   const loadDashboardData = async () => {
     try {
+      console.log('📊 Carregando dados do dashboard...');
       const products = await getProducts();
+
+      if (products.length > 0 && products[0].created_at) {
+        setDbStatus('connected');
+        console.log('🗄️ Dados carregados do Supabase');
+      } else {
+        setDbStatus('fallback');
+        console.log('📦 Dados carregados do mock (fallback)');
+      }
+
       const activeProducts = products.filter(p => p.status === 'active');
       const totalRevenue = products.reduce((sum, p) => sum + p.price, 0);
 
@@ -37,6 +48,7 @@ export default function AdminDashboard() {
       setRecentProducts(products.slice(0, 3));
     } catch (error) {
       console.error('Erro ao carregar dados do dashboard:', error);
+      setDbStatus('fallback');
     } finally {
       setLoading(false);
     }
@@ -79,9 +91,24 @@ export default function AdminDashboard() {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 mt-2">Bem-vindo ao painel de administração do Gordo Salgados</p>
+        <div className="flex items-center space-x-2">
+          <Database className="h-4 w-4" />
+          <span className="text-sm text-gray-600">Banco de dados:</span>
+          {dbStatus === 'connected' && (
+            <div className="flex items-center text-green-600">
+              <CheckCircle className="h-4 w-4 mr-1" />
+              <span className="text-sm font-medium">Supabase</span>
+            </div>
+          )}
+          {dbStatus === 'fallback' && (
+            <div className="flex items-center text-yellow-600">
+              <XCircle className="h-4 w-4 mr-1" />
+              <span className="text-sm font-medium">Mock (Local)</span>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
