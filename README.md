@@ -1,4 +1,4 @@
-# Firebase Studio
+# Landing Page - Gordo Salgados
 
 This is a NextJS starter in Firebase Studio.
 
