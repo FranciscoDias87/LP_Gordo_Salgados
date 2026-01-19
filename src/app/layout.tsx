@@ -50,7 +50,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={cn('min-h-dvh bg-background font-body antialiased')}>
+      <body
+        className={cn('min-h-dvh bg-background font-body antialiased')}
+        suppressHydrationWarning
+      >
         <div className="relative flex min-h-dvh flex-col">
           <Header />
           <main className="flex-1">{children}</main>
