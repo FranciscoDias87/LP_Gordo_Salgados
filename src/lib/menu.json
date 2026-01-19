@@ -1,0 +1,120 @@
+{
+  "menu": [
+    {
+      "category": "Fritos",
+      "items": [
+        {
+          "id": "coxinha-frango",
+          "name": "Coxinha de Frango",
+          "description": "Massa cremosa de batata com recheio suculento de frango desfiado e temperos especiais.",
+          "price": 8.50,
+          "imageUrl": "https://images.unsplash.com/photo-1628557366392-18357038421b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3hpbmhhJTIwYnJhemlsaWFuJTIwZm9vZHxlbnwwfHx8fDE3MDk4OTU0MzV8MA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "coxinha"
+        },
+        {
+          "id": "bolinha-queijo",
+          "name": "Bolinha de Queijo",
+          "description": "Massa leve e crocante recheada com queijo mussarela derretido.",
+          "price": 7.50,
+          "imageUrl": "https://images.unsplash.com/photo-1594020395389-191e41b3195b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib2xpbmhhJTIwZGUlMjBxdWVpam98ZW58MHx8fHwxNzA5ODk1NDYyfDA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "cheese ball"
+        },
+        {
+          "id": "risole-carne",
+          "name": "Risole de Carne",
+          "description": "Massa fininha recheada com carne moída bem temperada.",
+          "price": 8.00,
+          "imageUrl": "https://images.unsplash.com/photo-1616520775871-3943372c0c7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyYXN0eSUyMHBpZWNlfGVufDB8fHx8MTcwOTg5NTQ4OXww&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "meat pastry"
+        },
+        {
+          "id": "kibe",
+          "name": "Kibe",
+          "description": "Tradicional salgado de trigo com carne moída, hortelã e especiarias.",
+          "price": 8.00,
+          "imageUrl": "https://images.unsplash.com/photo-1598582732947-a36b3d4f452f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxraWJlfGVufDB8fHx8MTcwOTg5NTUxNnww&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "kibbeh"
+        }
+      ]
+    },
+    {
+      "category": "Assados",
+      "items": [
+        {
+          "id": "esfiha-carne",
+          "name": "Esfiha de Carne",
+          "description": "Massa macia com recheio de carne moída, tomate, cebola e um toque de limão.",
+          "price": 7.00,
+          "imageUrl": "https://images.unsplash.com/photo-1600803833981-5d07018338d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlc2ZpaGElMjBjYXJuZXxlbnwwfHx8fDE3MDk4OTU1NDJ8MA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "meat sfiha"
+        },
+        {
+          "id": "pao-batata-catupiry",
+          "name": "Pão de Batata com Catupiry",
+          "description": "Pão fofinho recheado com o autêntico requeijão Catupiry.",
+          "price": 9.00,
+          "imageUrl": "https://images.unsplash.com/photo-1621841364999-906c641d4c22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwYW8lMjBkZSUyMGJhdGF0YXxlbnwwfHx8fDE3MDk4OTU1Njd8MA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "potato bread"
+        },
+        {
+          "id": "mini-pizza",
+          "name": "Mini Pizza Mussarela",
+          "description": "Massa de pizza crocante com molho de tomate, queijo mussarela e orégano.",
+          "price": 6.50,
+          "imageUrl": "https://images.unsplash.com/photo-1594007654729-407eedc4be65?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtaW5pJTIwcGl6emF8ZW58MHx8fHwxNzA5ODk1NTg5fDA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "mini pizza"
+        }
+      ]
+    },
+    {
+      "category": "Kits Festa",
+      "items": [
+        {
+          "id": "kit-festa-25",
+          "name": "Kit Festa 25 Salgados",
+          "description": "Escolha até 5 variedades de salgados (5 de cada). Ideal para pequenas comemorações.",
+          "price": 50.00,
+          "imageUrl": "https://images.unsplash.com/photo-1560035213-6d168d1d0f5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMHNuYWNrc3xlbnwwfHx8fDE3MDk4OTU2MTJ8MA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "party snacks"
+        },
+        {
+          "id": "kit-festa-50",
+          "name": "Kit Festa 50 Salgados",
+          "description": "Escolha até 5 variedades de salgados (10 de cada). Perfeito para sua festa.",
+          "price": 95.00,
+          "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMGZvb2R8ZW58MHx8fHwxNzA5ODk1NjM0fDA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "party food"
+        }
+      ]
+    },
+    {
+      "category": "Bebidas",
+      "items": [
+        {
+          "id": "coca-cola-lata",
+          "name": "Coca-Cola (Lata 350ml)",
+          "description": "Refrigerante de cola gelado para acompanhar seu salgado.",
+          "price": 5.00,
+          "imageUrl": "https://images.unsplash.com/photo-1622483767222-231a43a059be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2NhJTIwY29sYSUyMGNhbnxlbnwwfHx8fDE3MDk4OTU2NTd8MA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "soda can"
+        },
+        {
+          "id": "guarana-lata",
+          "name": "Guaraná (Lata 350ml)",
+          "description": "O sabor inconfundível do guaraná para refrescar.",
+          "price": 5.00,
+          "imageUrl": "https://images.unsplash.com/photo-1630754836407-8c2f306935c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxndWFyYW5hJTIwc29kYXxlbnwwfHx8fDE3MDk4OTU2ODV8MA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "guarana soda"
+        },
+        {
+          "id": "agua-mineral",
+          "name": "Água Mineral (500ml)",
+          "description": "Água mineral sem gás para se hidratar.",
+          "price": 3.00,
+          "imageUrl": "https://images.unsplash.com/photo-1553564408-a4e9b9c94b7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3YXRlciUyMGJvdHRsZXxlbnwwfHx8fDE3MDk4OTU3MDV8MA&ixlib=rb-4.0.3&q=80&w=400",
+          "imageHint": "water bottle"
+        }
+      ]
+    }
+  ]
+}
