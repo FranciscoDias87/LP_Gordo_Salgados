@@ -1,4 +1,4 @@
-# **App Name**: SalgadoDelícia
+# **App Name**: Gordo Salgado 
 
 ## Core Features:
 

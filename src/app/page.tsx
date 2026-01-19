@@ -180,7 +180,7 @@ export default function Home() {
                       </p>
                       <Button asChild>
                         <Link
-                          href={`https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20pedir%20o%20item:%20${encodeURIComponent(
+                          href={`https://wa.me/5586995976883?text=Olá!%20Gostaria%20de%20pedir%20o%20item:%20${encodeURIComponent(
                             item.name
                           )}`}
                           target="_blank"
@@ -217,7 +217,7 @@ export default function Home() {
           </p>
           <Button asChild size="lg" variant="secondary" className="text-lg">
             <Link
-              href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20um%20Kit%20Festa."
+              href="https://wa.me/5586995976883?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20um%20Kit%20Festa."
               target="_blank"
               rel="noopener noreferrer"
             >
