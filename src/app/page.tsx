@@ -29,6 +29,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-coxinha');
@@ -96,7 +97,14 @@ export default function Home() {
             premium e fritos na hora. Peça já o seu!
           </p>
           <Button asChild size="lg" variant="secondary" className="text-lg">
-            <Link href="#contato">Pedir Agora</Link>
+            <Link
+              href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20na%20Gordo%20Salgados."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <WhatsAppIcon className="mr-2" />
+              Pedir Agora
+            </Link>
           </Button>
         </div>
         <div className="relative h-80 w-full overflow-hidden rounded-2xl shadow-2xl md:h-[450px]">
@@ -160,7 +168,17 @@ export default function Home() {
                           currency: 'BRL',
                         }).format(item.price)}
                       </p>
-                      <Button>Adicionar</Button>
+                      <Button asChild>
+                        <Link
+                          href={`https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20pedir%20o%20item:%20${encodeURIComponent(
+                            item.name
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Adicionar
+                        </Link>
+                      </Button>
                     </CardFooter>
                   </Card>
                 ))}
@@ -189,14 +207,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="mr-2 h-6 w-6"
-              >
-                <path d="M16.6 14.2c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.7-.8.9-.1.1-.3.1-.5 0-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6s0-.3.1-.4c.1-.1.2-.2.4-.4.1-.1.2-.2.2-.4.1-.1 0-.3-.1-.4-.1-.1-1.2-2.8-1.6-3.8-.4-.9-.8-1-.8-1s-.3-.1-.5-.1h-.5c-.2 0-.5.1-.8.4-.2.2-.8.8-.8 1.9s.9 2.2 1 2.4c.1.1 1.6 2.4 3.8 3.4.6.2.9.4 1.2.5.5.2.9.1 1.2-.1.4-.2.8-.9.9-1.1.1-.2.1-.4 0-.5s-.2-.2-.4-.4zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" />
-              </svg>
+              <WhatsAppIcon className="mr-2 h-6 w-6" />
               Solicitar Orçamento via WhatsApp
             </Link>
           </Button>

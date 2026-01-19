@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { WhatsAppFab } from '@/components/whatsapp-fab';
 
 export const metadata: Metadata = {
   title: 'Gordo Salgados - O sabor que abraça o seu coração',
@@ -37,6 +38,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <Toaster />
+        <WhatsAppFab />
       </body>
     </html>
   );
