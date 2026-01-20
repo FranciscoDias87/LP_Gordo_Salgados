@@ -1,0 +1,110 @@
+# 📋 CHECKLIST DE MELHORIAS - PROJETO GORDO SALGADOS
+
+## 🔴 CRÍTICO - Implementar ANTES do deploy
+
+### 🔐 SEGURANÇA
+- [ ] Implementar autenticação JWT + bcrypt
+- [ ] Remover senha hardcoded 'admin123'
+- [ ] Substituir localStorage por httpOnly cookies
+
+### 🧪 TESTES
+- [ ] Configurar Jest + React Testing Library
+- [ ] Criar testes para autenticação
+
+---
+
+## 🟡 ALTO - Melhorar experiência do usuário
+
+### ⚡ PERFORMANCE
+- [ ] Implementar React Query/SWR para cache
+- [ ] Otimizar imagens com next/image
+- [ ] Implementar lazy loading em componentes
+
+### 🏗️ ARQUITETURA
+- [ ] Separar responsabilidades do layout.tsx
+- [ ] Criar hooks customizados para lógica de negócio
+- [ ] Implementar tratamento de erros centralizado
+
+### 🚀 DEPLOY/PRODUÇÃO
+- [ ] Configurar variáveis de ambiente para produção
+- [ ] Implementar monitoramento de erros (Sentry)
+
+---
+
+## 🟢 MÉDIO - Melhorar qualidade e usabilidade
+
+### 🎨 UX/UI
+- [ ] Implementar validação de formulários com Zod
+- [ ] Adicionar toast notifications para feedback
+- [ ] Implementar loading states consistentes
+
+### 💻 QUALIDADE DE CÓDIGO
+- [ ] Remover console.logs de produção
+- [ ] Corrigir configurações TypeScript/ESLint
+- [ ] Criar constantes centralizadas
+
+### 📚 DOCUMENTAÇÃO
+- [ ] Atualizar README com Next.js 15 e dependências atuais
+- [ ] Criar documentação de API endpoints
+- [ ] Adicionar guia de contribuição
+
+---
+
+## 🔵 BAIXO - Melhorias futuras
+
+### ♿ ACESSIBILIDADE
+- [ ] Adicionar ARIA labels em componentes
+- [ ] Melhorar navegação por teclado
+
+### 🧪 TESTES ADICIONAIS
+- [ ] Implementar testes E2E com Playwright
+- [ ] Adicionar testes de performance
+
+---
+
+## 📊 RESUMO EXECUTIVO
+
+**Total de itens:** 25
+
+- **🔴 Crítico:** 5 itens (segurança + testes básicos)
+- **🟡 Alto:** 8 itens (performance + arquitetura + deploy)
+- **🟢 Médio:** 9 itens (UX + qualidade + documentação)
+- **🔵 Baixo:** 3 itens (acessibilidade + testes avançados)
+
+## 🎯 PLANO DE IMPLEMENTAÇÃO SUGERIDO
+
+### Semana 1: Segurança (Crítico)
+1. Implementar JWT + bcrypt
+2. Configurar testes básicos
+3. Remover vulnerabilidades
+
+### Semana 2: Performance (Alto)
+1. React Query/SWR
+2. Otimização de imagens
+3. Cache inteligente
+
+### Semana 3: Arquitetura (Alto)
+1. Refatorar layout.tsx
+2. Criar hooks customizados
+3. Tratamento de erros centralizado
+
+### Semana 4: UX/Qualidade (Médio)
+1. Validações com Zod
+2. Toast notifications
+3. Limpeza de código
+
+### Semana 5: Deploy/Documentação (Médio)
+1. Configurar produção
+2. Atualizar documentação
+3. Monitoramento
+
+---
+
+## ✅ CRITÉRIOS DE CONCLUSÃO
+
+- [ ] Todos os itens 🔴 CRÍTICOS implementados
+- [ ] Pelo menos 80% dos itens 🟡 ALTOS implementados
+- [ ] Cobertura de testes > 70%
+- [ ] Zero vulnerabilidades de segurança críticas
+- [ ] Performance otimizada (Lighthouse > 90)
+- [ ] Documentação completa e atualizada

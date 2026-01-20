@@ -3,36 +3,31 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { LayoutDashboard, ShoppingBag, LogOut } from 'lucide-react';
+import { LayoutDashboard, ShoppingBag, LogOut, ShieldPlus } from 'lucide-react';
+import { useAuth } from '@/hooks/use-auth';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [isAuthorized, setIsAuthorized] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const { isAuthenticated, isLoading, logout } = useAuth();
 
   // Verifica se está na página de login para não renderizar o layout
   const isLoginPage = pathname === '/admin/login';
 
   useEffect(() => {
-    setMounted(true);
-    if (!isLoginPage) {
-      const isAdmin = localStorage.getItem('isAdmin');
-      if (!isAdmin) {
-        router.push('/admin/login');
-      } else {
-        setIsAuthorized(true);
-      }
+    if (!isLoginPage && !isLoading && !isAuthenticated) {
+      router.push('/admin/login');
     }
-  }, [isLoginPage, router]);
+  }, [isLoginPage, isAuthenticated, isLoading, router]);
 
-  if (!mounted) return null;
+  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Carregando...</div>;
   if (isLoginPage) return <>{children}</>;
-  if (!isAuthorized) return null;
+  if (!isAuthenticated) return null;
 
   const menuItems = [
     { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
     { name: 'Produtos', icon: ShoppingBag, path: '/admin/products' },
+    { name: 'Admins', icon: ShieldPlus, path: '/admin/admins' },
   ];
 
   return (
@@ -49,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               href={item.path}
               className={`flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                 pathname === item.path
-                  ? 'bg-red-50 text-red-700'
+                  ? 'bg-red-50 text-red-700 '
                   : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >
@@ -59,7 +54,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           ))}
         </nav>
         <div className="p-4 border-t border-gray-100">
-          <button onClick={() => { localStorage.removeItem('isAdmin'); router.push('/admin/login'); }} className="flex items-center w-full px-4 py-2 text-sm font-medium text-gray-600 hover:text-red-600 transition-colors">
+          <button onClick={async () => { await logout(); router.push('/admin/login'); }} className="flex items-center w-full px-4 py-2 text-sm font-medium text-gray-600 hover:text-red-600 transition-colors">
             <LogOut className="w-5 h-5 mr-3" /> Sair
           </button>
         </div>

@@ -66,3 +66,121 @@ export const productService = {
     console.log('✅ Produto excluído com sucesso');
   }
 }
+
+export interface Admin {
+  id: string
+  email: string
+  name: string
+  password_hash: string
+  role: 'super_admin' | 'editor' | 'viewer'
+  is_active: boolean
+  last_login?: string
+  created_at?: string
+  updated_at?: string
+}
+
+// Funções para gerenciamento de admins
+export const adminService = {
+  async getAll() {
+    console.log('👥 Buscando todos os admins...')
+    const { data, error } = await supabase
+      .from('admins')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+    return data as Admin[]
+  },
+
+  async getById(id: string) {
+    const { data, error } = await supabase
+      .from('admins')
+      .select('*')
+      .eq('id', id)
+      .single()
+
+    if (error) throw error
+    return data as Admin
+  },
+
+  async getByEmail(email: string) {
+    const { data, error } = await supabase
+      .from('admins')
+      .select('*')
+      .eq('email', email)
+      .single()
+
+    if (error) throw error
+    return data as Admin
+  },
+
+  async create(admin: Omit<Admin, 'id' | 'created_at' | 'updated_at'>) {
+    console.log('👤 Criando admin:', admin.email)
+    const { data, error } = await supabase
+      .from('admins')
+      .insert([admin])
+      .select()
+      .single()
+
+    if (error) throw error
+    console.log('✅ Admin criado com sucesso')
+    return data as Admin
+  },
+
+  async update(id: string, updates: Partial<Omit<Admin, 'id' | 'created_at' | 'updated_at'>>) {
+    console.log('✏️ Atualizando admin:', id, updates)
+    const { data, error } = await supabase
+      .from('admins')
+      .update({ ...updates, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) throw error
+    console.log('✅ Admin atualizado com sucesso')
+    return data as Admin
+  },
+
+  async updateLastLogin(id: string) {
+    const { error } = await supabase
+      .from('admins')
+      .update({ last_login: new Date().toISOString() })
+      .eq('id', id)
+
+    if (error) throw error
+  },
+
+  async delete(id: string) {
+    console.log('🗑️ Excluindo admin:', id)
+    const { error } = await supabase
+      .from('admins')
+      .delete()
+      .eq('id', id)
+
+    if (error) throw error
+    console.log('✅ Admin excluído com sucesso')
+  },
+
+  // Função de autenticação usando API JWT (LEGACY - será removida)
+  async authenticate(email: string, password: string): Promise<Admin | null> {
+    console.warn('⚠️ Usando método de autenticação legado. Migrar para API JWT.');
+
+    try {
+      const admin = await this.getByEmail(email)
+
+      // Verificar senha com bcrypt
+      const bcrypt = await import('bcryptjs');
+      const isValid = await bcrypt.compare(password, admin.password_hash);
+
+      if (admin && isValid && admin.is_active) {
+        await this.updateLastLogin(admin.id)
+        return admin
+      }
+
+      return null
+    } catch (error) {
+      console.error('Erro na autenticação:', error)
+      return null
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { WhatsAppFab } from '@/components/whatsapp-fab';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { AuthProvider } from '@/hooks/use-auth';
 
 const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-coxinha');
 
@@ -54,13 +55,15 @@ export default function RootLayout({
         className={cn('min-h-dvh bg-background font-body antialiased')}
         suppressHydrationWarning
       >
-        <div className="relative flex min-h-dvh flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-        <Toaster />
-        <WhatsAppFab />
+        <AuthProvider>
+          <div className="relative flex min-h-dvh flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+          <Toaster />
+          <WhatsAppFab />
+        </AuthProvider>
       </body>
     </html>
   );

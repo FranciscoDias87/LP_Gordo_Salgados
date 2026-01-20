@@ -3,20 +3,24 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getProducts } from '@/lib/mock-data';
+import { adminService } from '@/lib/supabase';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ShoppingBag, TrendingUp, Users, DollarSign, Database, CheckCircle, XCircle } from 'lucide-react';
+import { ShoppingBag, TrendingUp, Users, DollarSign, Database, CheckCircle, XCircle, Shield } from 'lucide-react';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
     totalProducts: 0,
     activeProducts: 0,
     totalRevenue: 0,
-    customers: 150
+    customers: 150,
+    totalAdmins: 0,
+    activeAdmins: 0
   });
   const [recentProducts, setRecentProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [dbStatus, setDbStatus] = useState<'checking' | 'connected' | 'fallback'>('checking');
+  const [currentAdmin, setCurrentAdmin] = useState<any>(null);
 
   useEffect(() => {
     loadDashboardData();
@@ -25,6 +29,13 @@ export default function AdminDashboard() {
   const loadDashboardData = async () => {
     try {
       console.log('📊 Carregando dados do dashboard...');
+
+      // Carregar dados do admin atual
+      const adminData = localStorage.getItem('adminData');
+      if (adminData) {
+        setCurrentAdmin(JSON.parse(adminData));
+      }
+
       const products = await getProducts();
 
       if (products.length > 0 && products[0].created_at) {
@@ -38,11 +49,24 @@ export default function AdminDashboard() {
       const activeProducts = products.filter(p => p.status === 'active');
       const totalRevenue = products.reduce((sum, p) => sum + p.price, 0);
 
+      // Carregar estatísticas de admins
+      let totalAdmins = 0;
+      let activeAdmins = 0;
+      try {
+        const admins = await adminService.getAll();
+        totalAdmins = admins.length;
+        activeAdmins = admins.filter((admin: any) => admin.active).length;
+      } catch (error) {
+        console.log('Erro ao carregar admins:', error);
+      }
+
       setStats({
         totalProducts: products.length,
         activeProducts: activeProducts.length,
         totalRevenue,
-        customers: 150 // Mock data
+        customers: 150, // Mock data
+        totalAdmins,
+        activeAdmins
       });
 
       setRecentProducts(products.slice(0, 3));
@@ -87,6 +111,18 @@ export default function AdminDashboard() {
       icon: Users,
       color: 'text-purple-600',
     },
+    {
+      title: 'Total de Admins',
+      value: stats.totalAdmins,
+      icon: Shield,
+      color: 'text-red-600',
+    },
+    {
+      title: 'Admins Ativos',
+      value: stats.activeAdmins,
+      icon: Shield,
+      color: 'text-orange-600',
+    },
   ];
 
   return (
@@ -111,7 +147,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {statCards.map((stat, index) => (
           <Card key={index}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -137,6 +173,14 @@ export default function AdminDashboard() {
                 Gerenciar Produtos
               </Button>
             </Link>
+            {currentAdmin?.role === 'super_admin' && (
+              <Link href="/admin/admins">
+                <Button className="w-full justify-start" variant="outline">
+                  <Shield className="mr-2 h-4 w-4" />
+                  Gerenciar Admins
+                </Button>
+              </Link>
+            )}
             <Button className="w-full justify-start" variant="outline" disabled>
               <Users className="mr-2 h-4 w-4" />
               Gerenciar Pedidos (Em breve)
