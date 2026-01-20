@@ -6,55 +6,38 @@ import { productService } from '../../../lib/supabase';
 import { ProductForm } from '../../../components/admin/product-form';
 import { Button } from '@/components/ui/button';
 import { Plus, Edit, Trash2 } from 'lucide-react';
+import { useProductsManagement } from '@/hooks/use-products-management';
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
-  const loadProducts = async () => {
-    try {
-      const data = await getProducts();
-      setProducts(data);
-    } catch (error) {
-      console.error('Erro ao carregar produtos:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    products,
+    loading,
+    error,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+  } = useProductsManagement();
 
   const handleAddProduct = async (newProduct: Omit<Product, 'id'>) => {
-    try {
-      const created = await productService.create(newProduct);
-      setProducts([created, ...products]);
-    } catch (error) {
-      console.error('Erro ao criar produto:', error);
-      alert('Erro ao criar produto. Tente novamente.');
+    const result = await addProduct(newProduct);
+    if (!result.success) {
+      alert(result.error || 'Erro ao criar produto. Tente novamente.');
     }
   };
 
   const handleUpdateProduct = async (updatedProduct: Omit<Product, 'id'>, id: number) => {
-    try {
-      const updated = await productService.update(id, updatedProduct);
-      setProducts(products.map(p => p.id === id ? updated : p));
-    } catch (error) {
-      console.error('Erro ao atualizar produto:', error);
-      alert('Erro ao atualizar produto. Tente novamente.');
+    const result = await updateProduct(id, updatedProduct);
+    if (!result.success) {
+      alert(result.error || 'Erro ao atualizar produto. Tente novamente.');
     }
   };
 
   const handleDelete = async (id: number) => {
     if (!confirm('Tem certeza que deseja excluir este produto?')) return;
 
-    try {
-      await productService.delete(id);
-      setProducts(products.filter(p => p.id !== id));
-    } catch (error) {
-      console.error('Erro ao excluir produto:', error);
-      alert('Erro ao excluir produto. Tente novamente.');
+    const result = await deleteProduct(id);
+    if (!result.success) {
+      alert(result.error || 'Erro ao excluir produto. Tente novamente.');
     }
   };
 

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -31,57 +33,12 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
+import { STATIC_TESTIMONIALS } from '@/hooks/use-testimonials';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-coxinha');
   const { menu } = menuData;
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Ana Silva',
-      avatarUrl: 'https://picsum.photos/seed/ana/150/150',
-      avatarHint: 'woman avatar',
-      rating: 5,
-      quote:
-        'Nunca comi uma coxinha tão recheada! O tempero me lembrou a comida da minha avó. Recomendo muito!',
-    },
-    {
-      id: 2,
-      name: 'Carlos Oliveira',
-      avatarUrl: 'https://picsum.photos/seed/carlos/150/150',
-      avatarHint: 'man avatar',
-      rating: 5,
-      quote:
-        'Melhor kibe que já comi! Chegou quentinho e muito rápido. Recomendo demais!',
-    },
-    {
-      id: 3,
-      name: 'Juliana Santos',
-      avatarUrl: 'https://picsum.photos/seed/juliana/150/150',
-      avatarHint: 'woman avatar',
-      rating: 5,
-      quote:
-        'O kit festa salvou meu aniversário! Todos os convidados elogiaram os salgados. Qualidade impecável.',
-    },
-    {
-      id: 4,
-      name: 'Rafael Costa',
-      avatarUrl: 'https://picsum.photos/seed/rafael/150/150',
-      avatarHint: 'man avatar',
-      rating: 4,
-      quote:
-        'A bolinha de queijo é uma delícia, muito queijo mesmo! Só a entrega que demorou um pouquinho, mas valeu a pena.',
-    },
-    {
-      id: 5,
-      name: 'Fernanda Lima',
-      avatarUrl: 'https://picsum.photos/seed/fernanda/150/150',
-      avatarHint: 'woman avatar',
-      rating: 5,
-      quote:
-        'Pedi a esfiha de carne e me surpreendi. Massa fofinha e recheio muito bem temperado. Parabéns!',
-    },
-  ];
+  const testimonials = STATIC_TESTIMONIALS;
 
   return (
     <>

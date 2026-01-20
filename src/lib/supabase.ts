@@ -76,6 +76,18 @@ export interface Admin {
   updated_at?: string
 }
 
+interface AdminData {
+  id: string
+  email: string
+  name: string
+  password_hash: string
+  role: string;
+  is_active: boolean
+  last_login?: string
+  created_at?: string
+  updated_at?: string
+}
+
 // Funções para gerenciamento de admins
 export const adminService = {
   async getAll() {

@@ -2,6 +2,7 @@
 
 import { AuthProvider } from '@/hooks/use-auth';
 import { QueryProvider } from '@/components/query-provider';
+import { ErrorBoundary } from '@/components/error-boundary';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -9,10 +10,12 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <QueryProvider>
-      <AuthProvider>
-        {children}
-      </AuthProvider>
-    </QueryProvider>
+    <ErrorBoundary>
+      <QueryProvider>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </QueryProvider>
+    </ErrorBoundary>
   );
 }

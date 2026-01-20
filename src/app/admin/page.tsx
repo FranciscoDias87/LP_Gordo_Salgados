@@ -7,76 +7,20 @@ import { adminService } from '@/lib/supabase';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ShoppingBag, TrendingUp, Users, DollarSign, Database, CheckCircle, XCircle, Shield } from 'lucide-react';
+import { useDashboardStats } from '@/hooks/use-dashboard-stats';
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState({
-    totalProducts: 0,
-    activeProducts: 0,
-    totalRevenue: 0,
-    customers: 150,
-    totalAdmins: 0,
-    activeAdmins: 0
-  });
-  const [recentProducts, setRecentProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [dbStatus, setDbStatus] = useState<'checking' | 'connected' | 'fallback'>('checking');
-  const [currentAdmin, setCurrentAdmin] = useState<any>(null);
-
-  useEffect(() => {
-    loadDashboardData();
-  }, []);
-
-  const loadDashboardData = async () => {
-    try {
-      //console.log('📊 Carregando dados do dashboard...');
-
-      // Carregar dados do admin atual
-      const adminData = localStorage.getItem('adminData');
-      if (adminData) {
-        setCurrentAdmin(JSON.parse(adminData));
-      }
-
-      const products = await getProducts();
-
-      if (products.length > 0 && products[0].created_at) {
-        setDbStatus('connected');
-        //console.log('🗄️ Dados carregados do Supabase');
-      } else {
-        setDbStatus('fallback');
-        //console.log('📦 Dados carregados do mock (fallback)');
-      }
-
-      const activeProducts = products.filter(p => p.status === 'active');
-      const totalRevenue = products.reduce((sum, p) => sum + p.price, 0);
-
-      // Carregar estatísticas de admins
-      let totalAdmins = 0;
-      let activeAdmins = 0;
-      try {
-        const admins = await adminService.getAll();
-        totalAdmins = admins.length;
-        activeAdmins = admins.filter((admin: any) => admin.active).length;
-      } catch (error) {
-        console.log('Erro ao carregar admins:', error);
-      }
-
-      setStats({
-        totalProducts: products.length,
-        activeProducts: activeProducts.length,
-        totalRevenue,
-        customers: 150, // Mock data
-        totalAdmins,
-        activeAdmins
-      });
-
-      setRecentProducts(products.slice(0, 3));
-    } catch (error) {
-      console.error('Erro ao carregar dados do dashboard:', error);
-      setDbStatus('fallback');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    stats,
+    recentProducts,
+    loading,
+    dbStatus,
+    currentAdmin,
+    error,
+    getRevenueFormatted,
+    getProductStatusSummary,
+    getAdminStatusSummary,
+  } = useDashboardStats();
 
   if (loading) {
     return (
@@ -101,7 +45,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Receita Potencial',
-      value: `R$ ${stats.totalRevenue.toFixed(2)}`,
+      value: getRevenueFormatted(),
       icon: DollarSign,
       color: 'text-yellow-600',
     },
@@ -173,7 +117,7 @@ export default function AdminDashboard() {
                 Gerenciar Produtos
               </Button>
             </Link>
-            {currentAdmin?.role === 'super_admin' && (
+            {(currentAdmin as any)?.role === 'super_admin' && (
               <Link href="/admin/admins">
                 <Button className="w-full mt-6 justify-start" variant="outline">
                   <Shield className="mr-2 h-4 w-4" />

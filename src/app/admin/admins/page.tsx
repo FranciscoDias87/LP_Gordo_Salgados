@@ -5,43 +5,32 @@ import { adminService, Admin } from '../../../lib/supabase';
 import { AdminForm } from '../../../components/admin/admin-form';
 import { Button } from '@/components/ui/button';
 import { Plus, Edit, Trash2, Shield, Eye, Edit3 } from 'lucide-react';
+import { useAdmins } from '@/hooks/use-admins';
 
 export default function AdminsPage() {
-  const [admins, setAdmins] = useState<Admin[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadAdmins();
-  }, []);
-
-  const loadAdmins = async () => {
-    try {
-      const data = await adminService.getAll();
-      setAdmins(data);
-    } catch (error) {
-      console.error('Erro ao carregar admins:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    admins,
+    loading,
+    error,
+    createAdmin,
+    updateAdmin,
+    deleteAdmin,
+    clearError,
+  } = useAdmins();
 
   const handleAddAdmin = async (newAdmin: Omit<Admin, 'id' | 'created_at' | 'updated_at' | 'last_login'>) => {
     try {
-      const created = await adminService.create(newAdmin);
-      setAdmins([created, ...admins]);
+      await createAdmin(newAdmin);
     } catch (error) {
-      console.error('Erro ao criar admin:', error);
-      alert('Erro ao criar admin. Verifique se o email já existe.');
+      // Error já é tratado pelo hook
     }
   };
 
   const handleUpdateAdmin = async (updatedAdmin: Omit<Admin, 'id' | 'created_at' | 'updated_at' | 'last_login'>, id: string) => {
     try {
-      const updated = await adminService.update(id, updatedAdmin);
-      setAdmins(admins.map(a => a.id === id ? updated : a));
+      await updateAdmin(id, updatedAdmin);
     } catch (error) {
-      console.error('Erro ao atualizar admin:', error);
-      alert('Erro ao atualizar admin. Tente novamente.');
+      // Error já é tratado pelo hook
     }
   };
 
@@ -49,11 +38,9 @@ export default function AdminsPage() {
     if (!confirm('Tem certeza que deseja excluir este admin?')) return;
 
     try {
-      await adminService.delete(id);
-      setAdmins(admins.filter(a => a.id !== id));
+      await deleteAdmin(id);
     } catch (error) {
-      console.error('Erro ao excluir admin:', error);
-      alert('Erro ao excluir admin. Tente novamente.');
+      // Error já é tratado pelo hook
     }
   };
 
