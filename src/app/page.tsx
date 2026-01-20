@@ -42,7 +42,7 @@ export default function Home() {
       avatarHint: 'woman avatar',
       rating: 5,
       quote:
-        'As coxinhas são divinas! Massa levinha e recheio super cremoso. Virei cliente fiel!',
+        'Nunca comi uma coxinha tão recheada! O tempero me lembrou a comida da minha avó. Recomendo muito!',
     },
     {
       id: 2,
@@ -374,9 +374,9 @@ export default function Home() {
               <MapPin className="h-8 w-8 text-primary" />
               <h3 className="text-xl font-bold">Endereço</h3>
               <p className="text-foreground/70">
-                Av. dos Sabores, 123
+                Rua Real do Comércio, 500
                 <br />
-                Bairro da Gula, Cidade - UF
+                Centro, São Paulo - SP
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">

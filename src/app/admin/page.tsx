@@ -166,7 +166,7 @@ export default function AdminDashboard() {
           <CardHeader>
             <CardTitle>Gerenciamento Rápido</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-6">
             <Link href="/admin/products">
               <Button className="w-full justify-start" variant="outline">
                 <ShoppingBag className="mr-2 h-4 w-4" />
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
             </Link>
             {currentAdmin?.role === 'super_admin' && (
               <Link href="/admin/admins">
-                <Button className="w-full justify-start" variant="outline">
+                <Button className="w-full mt-6 justify-start" variant="outline">
                   <Shield className="mr-2 h-4 w-4" />
                   Gerenciar Admins
                 </Button>

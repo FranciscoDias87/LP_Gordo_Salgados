@@ -39,12 +39,12 @@ export function WhatsAppFab() {
         className="h-16 w-16 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#128C7E]"
       >
         <Link
-          href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20na%20Gordo%20Salgados."
+          href="https://wa.me/5511999999999?text=Oi!%20Vi%20o%20site%20do%20Gordo%20Salgados%20e%20fiquei%20com%20vontade.%20Pode%20me%20mandar%20o%20cardápio?"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Pedir via WhatsApp"
         >
-          <WhatsAppIcon className="h-8 w-8" />
+          <WhatsAppIcon className="h-24 w-24" />
         </Link>
       </Button>
     </div>
