@@ -148,7 +148,7 @@ describe('AuthService', () => {
       expect(response.admin.id).toBe(mockAdmin.id);
       expect(response.admin.email).toBe(mockAdmin.email);
       expect(response.admin.role).toBe(mockAdmin.role);
-      expect(response.admin.password_hash).toBeUndefined();
+      expect((response.admin as any).password_hash).toBeUndefined();
     });
   });
 
