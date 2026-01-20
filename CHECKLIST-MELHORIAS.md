@@ -18,7 +18,7 @@
 ### ⚡ PERFORMANCE
 - [x] Implementar React Query/SWR para cache
 - [x] Otimizar imagens com next/image
-- [ ] Implementar lazy loading em componentes
+- [x] Implementar lazy loading em componentes
 
 ### 🏗️ ARQUITETURA
 - [ ] Separar responsabilidades do layout.tsx
@@ -67,7 +67,7 @@
 **Total de itens:** 25
 
 - **🔴 Crítico:** 5 itens (5/5 concluídos ✅ - COMPLETO!)
-- **🟡 Alto:** 8 itens (2/8 concluídos - React Query ✅, Otimização de imagens ✅)
+- **🟡 Alto:** 8 itens (3/8 concluídos - Performance 100% ✅)
 - **🟢 Médio:** 9 itens (4/9 concluído - qualidade de código ✅, UI/UX ✅)
 - **🔵 Baixo:** 3 itens (acessibilidade + testes avançados)
 
