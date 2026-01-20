@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { ResponsiveImage } from '@/components/optimized-image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
   Card,
@@ -115,12 +116,10 @@ export default function Home() {
           style={{ animationDelay: '0.4s' }}
         >
           {heroImage && (
-            <Image
+            <ResponsiveImage
               src={heroImage.imageUrl}
               alt={heroImage.description}
-              fill
-              className="object-cover"
-              data-ai-hint={heroImage.imageHint}
+              containerClassName="relative h-80 w-full md:h-[450px]"
               priority
             />
           )}
@@ -153,15 +152,12 @@ export default function Home() {
                     className="flex flex-col overflow-hidden rounded-xl shadow-lg transition-transform hover:scale-105"
                   >
                     <CardHeader className="p-0">
-                      <div className="relative h-48 w-full">
-                        <Image
-                          src={item.imageUrl}
-                          alt={item.name}
-                          fill
-                          className="object-cover"
-                          data-ai-hint={item.imageHint}
-                        />
-                      </div>
+                      <ResponsiveImage
+                        src={item.imageUrl}
+                        alt={item.name}
+                        containerClassName="relative h-48 w-full"
+                        loading="lazy"
+                      />
                     </CardHeader>
                     <CardContent className="flex flex-1 flex-col gap-2 p-4">
                       <CardTitle className="text-xl font-bold">

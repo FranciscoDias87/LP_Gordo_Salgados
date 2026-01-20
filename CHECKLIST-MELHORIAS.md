@@ -17,7 +17,7 @@
 
 ### ⚡ PERFORMANCE
 - [x] Implementar React Query/SWR para cache
-- [ ] Otimizar imagens com next/image
+- [x] Otimizar imagens com next/image
 - [ ] Implementar lazy loading em componentes
 
 ### 🏗️ ARQUITETURA
@@ -67,7 +67,7 @@
 **Total de itens:** 25
 
 - **🔴 Crítico:** 5 itens (5/5 concluídos ✅ - COMPLETO!)
-- **🟡 Alto:** 8 itens (1/8 concluído - React Query ✅)
+- **🟡 Alto:** 8 itens (2/8 concluídos - React Query ✅, Otimização de imagens ✅)
 - **🟢 Médio:** 9 itens (4/9 concluído - qualidade de código ✅, UI/UX ✅)
 - **🔵 Baixo:** 3 itens (acessibilidade + testes avançados)
 
