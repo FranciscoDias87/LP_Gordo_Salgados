@@ -21,7 +21,7 @@
 - [x] Implementar lazy loading em componentes
 
 ### 🏗️ ARQUITETURA
-- [ ] Separar responsabilidades do layout.tsx
+- [x] Separar responsabilidades do layout.tsx
 - [ ] Criar hooks customizados para lógica de negócio
 - [ ] Implementar tratamento de erros centralizado
 
@@ -40,7 +40,7 @@
 
 ### 💻 QUALIDADE DE CÓDIGO
 - [x] Remover console.logs de produção
-- [ ] Corrigir configurações TypeScript/ESLint
+- [x] Corrigir configurações TypeScript/ESLint
 - [ ] Criar constantes centralizadas
 
 ### 📚 DOCUMENTAÇÃO
@@ -68,7 +68,7 @@
 
 - **🔴 Crítico:** 5 itens (5/5 concluídos ✅ - COMPLETO!)
 - **🟡 Alto:** 8 itens (3/8 concluídos - Performance 100% ✅)
-- **🟢 Médio:** 9 itens (4/9 concluído - qualidade de código ✅, UI/UX ✅)
+- **🟢 Médio:** 9 itens (5/9 concluído - qualidade de código ✅, UI/UX ✅)
 - **🔵 Baixo:** 3 itens (acessibilidade + testes avançados)
 
 ## 🎯 PLANO DE IMPLEMENTAÇÃO SUGERIDO

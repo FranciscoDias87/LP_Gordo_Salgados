@@ -1,37 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { Toaster } from '@/components/ui/toaster';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import { WhatsAppFab } from '@/components/whatsapp-fab';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { AuthProvider } from '@/hooks/use-auth';
-import { QueryProvider } from '@/components/query-provider';
+import { siteMetadata } from '@/lib/metadata';
+import { Providers } from '@/components/providers';
+import { MainLayout } from '@/components/layout/main-layout';
 
-const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-coxinha');
-
-export const metadata: Metadata = {
-  title: 'Gordo Salgados - Os Melhores Salgados da Região',
-  description:
-    'Os melhores salgados artesanais da região, feitos com ingredientes premium e fritos na hora. Peça já o seu!',
-  openGraph: {
-    title: 'Gordo Salgados - Os Melhores Salgados da Região',
-    description:
-      'Os melhores salgados artesanais da região, feitos com ingredientes premium e fritos na hora. Peça já o seu!',
-    images: heroImage ? [heroImage.imageUrl] : [],
-    siteName: 'Gordo Salgados',
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Gordo Salgados - Os Melhores Salgados da Região',
-    description:
-      'Os melhores salgados artesanais da região, feitos com ingredientes premium e fritos na hora. Peça já o seu!',
-    images: heroImage ? [heroImage.imageUrl] : [],
-  },
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -56,17 +30,9 @@ export default function RootLayout({
         className={cn('min-h-dvh bg-background font-body antialiased')}
         suppressHydrationWarning
       >
-        <QueryProvider>
-          <AuthProvider>
-            <div className="relative flex min-h-dvh flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-            <Toaster />
-            <WhatsAppFab />
-          </AuthProvider>
-        </QueryProvider>
+        <Providers>
+          <MainLayout>{children}</MainLayout>
+        </Providers>
       </body>
     </html>
   );
