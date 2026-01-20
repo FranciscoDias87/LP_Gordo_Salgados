@@ -1,3 +1,4 @@
+//sentry.client.config.ts
 
 import * as Sentry from "@sentry/nextjs";
 
@@ -6,6 +7,9 @@ Sentry.init({
 
   // Ajuste este valor em produção, ou use tracesSampler para maior controle
   tracesSampleRate: 1,
+
+  //
+  sendDefaultPii: true,
 
   // Definir como true imprimirá informações úteis no console durante a configuração
   debug: false,
