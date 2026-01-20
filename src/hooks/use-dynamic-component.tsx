@@ -62,9 +62,7 @@ export const LazyWhatsAppFab = dynamic(
  * Carrega admin form dinamicamente
  */
 export const LazyAdminForm = dynamic(
-  () => import('@/components/admin/admin-form').then((mod) => ({
-    default: mod.default,
-  })),
+  () => import('@/components/admin/admin-form').then((mod) => mod.AdminForm),
   {
     ssr: false,
     loading: () => <div className="space-y-4">
@@ -79,9 +77,7 @@ export const LazyAdminForm = dynamic(
  * Carrega product form dinamicamente
  */
 export const LazyProductForm = dynamic(
-  () => import('@/components/admin/product-form').then((mod) => ({
-    default: mod.default,
-  })),
+  () => import('@/components/admin/product-form').then((mod)=>mod.ProductForm),
   {
     ssr: false,
     loading: () => <div className="space-y-4">
