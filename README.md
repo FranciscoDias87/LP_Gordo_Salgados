@@ -18,12 +18,15 @@ Uma landing page moderna para a empresa Gordo Salgados com painel administrativo
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Next.js 14** - Framework React com App Router
+- **Next.js 15** - Framework React com App Router
 - **TypeScript** - Tipagem estática
 - **Tailwind CSS** - Estilização utilitária
 - **Supabase** - Banco de dados e autenticação
 - **Shadcn/ui** - Componentes UI
 - **Lucide Icons** - Ícones
+- **Zod** - Validação de esquemas
+- **React Query** - Gerenciamento de estado e cache
+- **Sentry** - Monitoramento de erros
 
 ## 📋 Pré-requisitos
 
@@ -71,7 +74,7 @@ npm run dev
 ### 5. Acesse o painel admin
 - **Landing Page**: http://localhost:3000
 - **Login Admin**: http://localhost:3000/admin/login
-- **Senha**: `admin123` (pode ser alterada no código)
+- **Credenciais**: Configuradas via banco de dados (Autenticação segura)
 
 ## 📁 Estrutura do Projeto
 
@@ -103,7 +106,7 @@ src/
 
 ## 🔒 Segurança
 
-- **Autenticação**: Sistema de login baseado em localStorage (para demo)
+- **Autenticação**: Sistema robusto com JWT e Cookies HttpOnly
 - **Row Level Security**: Configurado no Supabase
 - **Variáveis de Ambiente**: Chaves sensíveis protegidas
 
@@ -139,4 +142,4 @@ Para dúvidas ou sugestões, entre em contato:
 
 ---
 
-**Desenvolvido com ❤️ para Gordo Salgados**
+**Desenvolvido para Gordo Salgados**

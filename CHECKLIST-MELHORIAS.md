@@ -26,8 +26,8 @@
 - [x] Implementar tratamento de erros centralizado
 
 ### 🚀 DEPLOY/PRODUÇÃO
-- [ ] Configurar variáveis de ambiente para produção
-- [ ] Implementar monitoramento de erros (Sentry)
+- [x] Configurar variáveis de ambiente para produção
+- [x] Implementar monitoramento de erros (Sentry)
 
 ---
 
@@ -44,7 +44,7 @@
 - [x] Criar constantes centralizadas
 
 ### 📚 DOCUMENTAÇÃO
-- [ ] Atualizar README com Next.js 15 e dependências atuais
+- [x] Atualizar README com Next.js 15 e dependências atuais
 - [ ] Criar documentação de API endpoints
 - [ ] Adicionar guia de contribuição
 
