@@ -3,9 +3,9 @@
 ## 🔴 CRÍTICO - Implementar ANTES do deploy
 
 ### 🔐 SEGURANÇA
-- [ ] Implementar autenticação JWT + bcrypt
-- [ ] Remover senha hardcoded 'admin123'
-- [ ] Substituir localStorage por httpOnly cookies
+- [x] Implementar autenticação JWT + bcrypt
+- [x] Remover senha hardcoded 'admin123'
+- [x] Substituir localStorage por httpOnly cookies
 
 ### 🧪 TESTES
 - [ ] Configurar Jest + React Testing Library
