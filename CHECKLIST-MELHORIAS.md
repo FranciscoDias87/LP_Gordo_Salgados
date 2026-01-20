@@ -16,7 +16,7 @@
 ## 🟡 ALTO - Melhorar experiência do usuário
 
 ### ⚡ PERFORMANCE
-- [ ] Implementar React Query/SWR para cache
+- [x] Implementar React Query/SWR para cache
 - [ ] Otimizar imagens com next/image
 - [ ] Implementar lazy loading em componentes
 
@@ -67,7 +67,7 @@
 **Total de itens:** 25
 
 - **🔴 Crítico:** 5 itens (5/5 concluídos ✅ - COMPLETO!)
-- **🟡 Alto:** 8 itens (performance + arquitetura + deploy)
+- **🟡 Alto:** 8 itens (1/8 concluído - React Query ✅)
 - **🟢 Médio:** 9 itens (4/9 concluído - qualidade de código ✅, UI/UX ✅)
 - **🔵 Baixo:** 3 itens (acessibilidade + testes avançados)
 
