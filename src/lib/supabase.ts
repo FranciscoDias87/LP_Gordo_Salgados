@@ -18,7 +18,7 @@ export interface Product {
 // Funções para CRUD de produtos
 export const productService = {
   async getAll() {
-    console.log('🔍 Buscando todos os produtos no Supabase...');
+    //console.log('🔍 Buscando todos os produtos no Supabase...');
     const { data, error } = await supabase
       .from('products')
       .select('*')
@@ -29,7 +29,7 @@ export const productService = {
   },
 
   async create(product: Omit<Product, 'id' | 'created_at' | 'updated_at'>) {
-    console.log('➕ Criando produto no Supabase:', product.name);
+    //console.log('➕ Criando produto no Supabase:', product.name);
     const { data, error } = await supabase
       .from('products')
       .insert([product])
@@ -37,12 +37,12 @@ export const productService = {
       .single()
 
     if (error) throw error
-    console.log('✅ Produto criado com sucesso:', data.id);
+    //console.log('✅ Produto criado com sucesso:', data.id);
     return data as Product
   },
 
   async update(id: number, updates: Partial<Omit<Product, 'id' | 'created_at' | 'updated_at'>>) {
-    console.log('✏️ Atualizando produto no Supabase:', id, updates);
+    //console.log('✏️ Atualizando produto no Supabase:', id, updates);
     const { data, error } = await supabase
       .from('products')
       .update({ ...updates, updated_at: new Date().toISOString() })
@@ -51,19 +51,16 @@ export const productService = {
       .single()
 
     if (error) throw error
-    console.log('✅ Produto atualizado com sucesso');
     return data as Product
   },
 
   async delete(id: number) {
-    console.log('🗑️ Excluindo produto no Supabase:', id);
     const { error } = await supabase
       .from('products')
       .delete()
       .eq('id', id)
 
     if (error) throw error
-    console.log('✅ Produto excluído com sucesso');
   }
 }
 
@@ -82,7 +79,7 @@ export interface Admin {
 // Funções para gerenciamento de admins
 export const adminService = {
   async getAll() {
-    console.log('👥 Buscando todos os admins...')
+    //console.log('👥 Buscando todos os admins...')
     const { data, error } = await supabase
       .from('admins')
       .select('*')
@@ -115,7 +112,6 @@ export const adminService = {
   },
 
   async create(admin: Omit<Admin, 'id' | 'created_at' | 'updated_at'>) {
-    console.log('👤 Criando admin:', admin.email)
     const { data, error } = await supabase
       .from('admins')
       .insert([admin])
@@ -123,12 +119,10 @@ export const adminService = {
       .single()
 
     if (error) throw error
-    console.log('✅ Admin criado com sucesso')
     return data as Admin
   },
 
   async update(id: string, updates: Partial<Omit<Admin, 'id' | 'created_at' | 'updated_at'>>) {
-    console.log('✏️ Atualizando admin:', id, updates)
     const { data, error } = await supabase
       .from('admins')
       .update({ ...updates, updated_at: new Date().toISOString() })
@@ -137,7 +131,6 @@ export const adminService = {
       .single()
 
     if (error) throw error
-    console.log('✅ Admin atualizado com sucesso')
     return data as Admin
   },
 
@@ -151,20 +144,16 @@ export const adminService = {
   },
 
   async delete(id: string) {
-    console.log('🗑️ Excluindo admin:', id)
     const { error } = await supabase
       .from('admins')
       .delete()
       .eq('id', id)
 
     if (error) throw error
-    console.log('✅ Admin excluído com sucesso')
   },
 
   // Função de autenticação usando API JWT (LEGACY - será removida)
   async authenticate(email: string, password: string): Promise<Admin | null> {
-    console.warn('⚠️ Usando método de autenticação legado. Migrar para API JWT.');
-
     try {
       const admin = await this.getByEmail(email)
 
@@ -179,7 +168,6 @@ export const adminService = {
 
       return null
     } catch (error) {
-      console.error('Erro na autenticação:', error)
       return null
     }
   }

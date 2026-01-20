@@ -39,7 +39,7 @@
 - [ ] Implementar loading states consistentes
 
 ### 💻 QUALIDADE DE CÓDIGO
-- [ ] Remover console.logs de produção
+- [x] Remover console.logs de produção
 - [ ] Corrigir configurações TypeScript/ESLint
 - [ ] Criar constantes centralizadas
 

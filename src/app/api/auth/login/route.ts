@@ -60,12 +60,11 @@ export async function POST(request: NextRequest) {
       path: '/'
     });
 
-    console.log(`✅ Login bem-sucedido: ${admin.email} (${admin.role})`);
+    //console.log(`✅ Login bem-sucedido: ${admin.email} (${admin.role})`);
 
     return response;
 
   } catch (error) {
-    console.error('Erro no login:', error);
     return NextResponse.json(
       AuthService.createErrorResponse('Erro interno do servidor'),
       { status: 500 }

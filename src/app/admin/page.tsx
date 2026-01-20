@@ -28,7 +28,7 @@ export default function AdminDashboard() {
 
   const loadDashboardData = async () => {
     try {
-      console.log('📊 Carregando dados do dashboard...');
+      //console.log('📊 Carregando dados do dashboard...');
 
       // Carregar dados do admin atual
       const adminData = localStorage.getItem('adminData');
@@ -40,10 +40,10 @@ export default function AdminDashboard() {
 
       if (products.length > 0 && products[0].created_at) {
         setDbStatus('connected');
-        console.log('🗄️ Dados carregados do Supabase');
+        //console.log('🗄️ Dados carregados do Supabase');
       } else {
         setDbStatus('fallback');
-        console.log('📦 Dados carregados do mock (fallback)');
+        //console.log('📦 Dados carregados do mock (fallback)');
       }
 
       const activeProducts = products.filter(p => p.status === 'active');

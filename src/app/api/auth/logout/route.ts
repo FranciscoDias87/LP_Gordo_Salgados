@@ -17,12 +17,11 @@ export async function POST() {
       path: '/'
     });
 
-    console.log('✅ Logout realizado com sucesso');
+    //console.log('✅ Logout realizado com sucesso');
 
     return response;
 
   } catch (error) {
-    console.error('Erro no logout:', error);
     return NextResponse.json(
       { success: false, message: 'Erro interno do servidor' },
       { status: 500 }

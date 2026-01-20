@@ -21,7 +21,7 @@ export default function LoginPage() {
       const result = await login(email, password);
 
       if (result.success) {
-        console.log('✅ Login realizado com sucesso');
+        //console.log('✅ Login realizado com sucesso');
         router.push('/admin/');
       } else {
         setError(result.error || 'Email ou senha incorretos');
