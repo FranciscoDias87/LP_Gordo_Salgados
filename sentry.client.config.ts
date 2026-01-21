@@ -22,13 +22,19 @@ if (!Sentry.getClient()) {
     replaysSessionSampleRate: 0.1,
 
     // Você pode remover esta opção se não planeja usar o recurso Sentry Session Replay:
-    integrations: [
-      Sentry.replayIntegration({
-        // Configuração adicional de Replay vai aqui,
-        // por exemplo, você pode mascarar todo o texto no replay
-        maskAllText: true,
-        blockAllMedia: true,
-      }),
-    ],
+    integrations: [],
   });
+
+  // Adiciona o Replay apenas se for ambiente de navegador e se não houver um Replay ativo
+  if (typeof window !== "undefined") {
+    const client = Sentry.getClient();
+    if (client && !client.getIntegrationByName("Replay")) {
+      client.addIntegration(
+        Sentry.replayIntegration({
+          maskAllText: true,
+          blockAllMedia: true,
+        })
+      );
+    }
+  }
 }
