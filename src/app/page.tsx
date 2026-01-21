@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import { ResponsiveImage } from '@/components/optimized-image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { ResponsiveImage } from "@/components/optimized-image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import menuData from '@/lib/menu.json';
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import menuData from "@/lib/menu.json";
 import {
   Clock,
   Gem,
@@ -23,46 +23,46 @@ import {
   Rocket,
   Star,
   Zap,
-} from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
-import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
-import { STATIC_TESTIMONIALS } from '@/hooks/use-testimonials';
-import { siteConfig, whatsappLink } from '@/lib/config';
+} from "@/components/ui/carousel";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
+import { STATIC_TESTIMONIALS } from "@/hooks/use-testimonials";
+import { siteConfig, whatsappLink } from "@/lib/config";
 
 export default function Home() {
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-coxinha');
+  const heroImage = PlaceHolderImages.find((img) => img.id === "hero-coxinha");
   const { menu } = menuData;
   const testimonials = STATIC_TESTIMONIALS;
-  const priceFormatter = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
+  const priceFormatter = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
   });
 
   const features = [
     {
       icon: Gem,
-      title: 'Ingredientes Premium',
+      title: "Ingredientes Premium",
       description:
-        'Selecionamos apenas os melhores ingredientes, garantindo sabor e qualidade inigualáveis.',
+        "Selecionamos apenas os melhores ingredientes, garantindo sabor e qualidade inigualáveis.",
     },
     {
       icon: Zap,
-      title: 'Fritos na Hora',
+      title: "Fritos na Hora",
       description:
-        'Seus salgados são preparados no momento do pedido, chegando quentinhos e crocantes até você.',
+        "Seus salgados são preparados no momento do pedido, chegando quentinhos e crocantes até você.",
     },
     {
       icon: Rocket,
-      title: 'Entrega Rápida',
+      title: "Entrega Rápida",
       description:
-        'Receba seus salgados favoritos no conforto da sua casa, com rapidez e eficiência.',
+        "Receba seus salgados favoritos no conforto da sua casa, com rapidez e eficiência.",
     },
   ];
 
@@ -74,7 +74,7 @@ export default function Home() {
       >
         <div
           className="flex animate-fade-in-up flex-col items-start gap-6 opacity-0"
-          style={{ animationDelay: '0.2s' }}
+          style={{ animationDelay: "0.2s" }}
         >
           <h1 className="font-headline text-5xl font-bold leading-tight md:text-6xl">
             O sabor que abraça o seu coração
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
         <div
           className="relative h-80 w-full animate-fade-in-up overflow-hidden rounded-2xl shadow-2xl opacity-0 md:h-[450px]"
-          style={{ animationDelay: '0.4s' }}
+          style={{ animationDelay: "0.4s" }}
         >
           {heroImage && (
             <ResponsiveImage
@@ -112,7 +112,7 @@ export default function Home() {
       <section
         id="cardapio"
         className="container animate-fade-in-up py-16 opacity-0"
-        style={{ animationDelay: '0.5s' }}
+        style={{ animationDelay: "0.5s" }}
       >
         <h2 className="text-center font-headline text-4xl font-bold">
           Cardápio
@@ -157,8 +157,8 @@ export default function Home() {
                       <Button asChild>
                         <Link
                           href={`${whatsappLink}?text=Olá!%20Gostaria%20de%20fazer%20este%20pedido:%20${encodeURIComponent(
-                            item.name
-                          )}%20,na%20${siteConfig.businessName}`}
+                            item.name,
+                          )},%20na%20${siteConfig.businessName}!!!`}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -177,7 +177,7 @@ export default function Home() {
       <section
         id="kits-festa"
         className="container animate-fade-in-up py-16 opacity-0"
-        style={{ animationDelay: '0.6s' }}
+        style={{ animationDelay: "0.6s" }}
       >
         <div className="rounded-2xl border-4 border-primary bg-primary/5 p-8 text-center shadow-lg md:p-12">
           <div className="mx-auto mb-4 inline-block rounded-full bg-primary/10 p-4">
@@ -187,9 +187,10 @@ export default function Home() {
             Kits para sua Festa!
           </h2>
           <p className="mx-auto mb-8 max-w-3xl text-lg text-foreground/80">
-            Leve o sabor inconfundível da {siteConfig.businessName} para o seu evento.
-            Temos opções de kits com centos de salgados que vão surpreender
-            seus convidados. Entre em contato para um orçamento personalizado!
+            Leve o sabor inconfundível da {siteConfig.businessName} para o seu
+            evento. Temos opções de kits com centos de salgados que vão
+            surpreender seus convidados. Entre em contato para um orçamento
+            personalizado!
           </p>
           <Button asChild size="lg" variant="secondary" className="text-lg">
             <Link
@@ -207,7 +208,7 @@ export default function Home() {
       <section
         id="porque-nos"
         className="animate-fade-in-up bg-muted/50 py-16 opacity-0 sm:py-24"
-        style={{ animationDelay: '0.7s' }}
+        style={{ animationDelay: "0.7s" }}
       >
         <div className="container">
           <h2 className="text-center font-headline text-4xl font-bold">
@@ -233,14 +234,14 @@ export default function Home() {
       <section
         id="depoimentos"
         className="container animate-fade-in-up py-16 opacity-0 sm:py-24"
-        style={{ animationDelay: '0.8s' }}
+        style={{ animationDelay: "0.8s" }}
       >
         <h2 className="text-center font-headline text-4xl font-bold">
           O que nossos clientes dizem
         </h2>
         <Carousel
           opts={{
-            align: 'start',
+            align: "start",
             loop: true,
           }}
           className="mx-auto mt-12 w-full max-w-xs sm:max-w-2xl lg:max-w-4xl"
@@ -270,8 +271,8 @@ export default function Home() {
                             key={i}
                             className={`size-5 ${
                               i < testimonial.rating
-                                ? 'fill-primary text-primary'
-                                : 'text-muted-foreground/50'
+                                ? "fill-primary text-primary"
+                                : "text-muted-foreground/50"
                             }`}
                           />
                         ))}
@@ -294,7 +295,7 @@ export default function Home() {
       <section
         id="localizacao"
         className="container animate-fade-in-up py-16 opacity-0"
-        style={{ animationDelay: '0.9s' }}
+        style={{ animationDelay: "0.9s" }}
       >
         <h2 className="text-center font-headline text-4xl font-bold">
           Onde Estamos
@@ -318,12 +319,10 @@ export default function Home() {
       <section
         id="contato"
         className="container animate-fade-in-up py-16 opacity-0 sm:py-24"
-        style={{ animationDelay: '1.0s' }}
+        style={{ animationDelay: "1.0s" }}
       >
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="font-headline text-4xl font-bold">
-            Entre em Contato
-          </h2>
+          <h2 className="font-headline text-4xl font-bold">Entre em Contato</h2>
           <p className="mt-4 text-lg text-foreground/80">
             Estamos prontos para atender você!
           </p>
@@ -334,14 +333,16 @@ export default function Home() {
               <p className="text-foreground/70">
                 {siteConfig.contact.address.street}
                 <br />
-                {siteConfig.contact.address.neighborhood},{' '}
+                {siteConfig.contact.address.neighborhood},{" "}
                 {siteConfig.contact.address.cityState}
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Phone className="h-8 w-8 text-primary" />
               <h3 className="text-xl font-bold">WhatsApp</h3>
-              <p className="text-foreground/70">{siteConfig.contact.displayPhoneNumber}</p>
+              <p className="text-foreground/70">
+                {siteConfig.contact.displayPhoneNumber}
+              </p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Clock className="h-8 w-8 text-primary" />

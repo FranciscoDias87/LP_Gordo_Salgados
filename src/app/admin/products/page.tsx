@@ -56,8 +56,8 @@ export default function ProductsPage() {
         <ProductForm
           onSave={handleAddProduct}
           trigger={
-            <Button className="bg-red-600 hover:bg-red-700">
-              <Plus className="w-4 h-4 mr-2" />
+            <Button className="bg-red-600 hover:bg-red-700 text-white bold hover:font-bold hover:uppercase">
+              <Plus className="w-4 h-4 mr-2 hover:text-white hover:font-bold " />
               Novo Produto
             </Button>
           }

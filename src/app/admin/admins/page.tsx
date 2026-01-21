@@ -85,7 +85,7 @@ export default function AdminsPage() {
         <AdminForm
           onSave={handleAddAdmin}
           trigger={
-            <Button className="bg-red-600 hover:bg-red-700">
+            <Button className="bg-red-600 text-white bold hover:bg-red-700 hover:text-white hover:font-bold hover:uppercase">
               <Plus className="w-4 h-4 mr-2" />
               Novo Admin
             </Button>

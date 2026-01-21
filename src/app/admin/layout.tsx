@@ -44,8 +44,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               href={item.path}
               className={`flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                 pathname === item.path
-                  ? 'bg-red-50 text-red-700 '
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  ? 'bg-red-700 text-white bold uppercase'
+                  : 'text-gray-600 bold hover:bg-red-500 hover:text-white bold '
               }`}
             >
               <item.icon className="w-5 h-5 mr-3" />
