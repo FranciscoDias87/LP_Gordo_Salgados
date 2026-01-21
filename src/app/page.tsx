@@ -156,9 +156,9 @@ export default function Home() {
                       </p>
                       <Button asChild>
                         <Link
-                          href={`${whatsappLink}?text=Olá!%20Gostaria%20de%20pedir%20o%20item:%20${encodeURIComponent(
+                          href={`${whatsappLink}?text=Olá!%20Gostaria%20de%20fazer%20este%20pedido:%20${encodeURIComponent(
                             item.name
-                          )}`}
+                          )}%20,na%20${siteConfig.businessName}`}
                           target="_blank"
                           rel="noopener noreferrer"
                         >

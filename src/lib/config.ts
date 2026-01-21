@@ -2,7 +2,7 @@ export const siteConfig = {
   businessName: 'Gordo Salgados',
   contact: {
     // Used for WhatsApp API links
-    whatsappNumber: '5586995976883',
+    whatsappNumber: '+5586998532928',
     // Formatted phone number for display
     displayPhoneNumber: '(86) 99853-2928',
     address: {

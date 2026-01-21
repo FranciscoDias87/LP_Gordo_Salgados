@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import { WhatsAppIcon } from './icons/whatsapp-icon';
+import { siteConfig, whatsappLink } from '@/lib/config';
 
 export function WhatsAppFab() {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,7 +40,7 @@ export function WhatsAppFab() {
         className="h-16 w-16 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#128C7E]"
       >
         <Link
-          href="https://wa.me/5511999999999?text=Oi!%20Vi%20o%20site%20do%20Gordo%20Salgados%20e%20fiquei%20com%20vontade.%20Pode%20me%20mandar%20o%20cardápio?"
+          href={`${whatsappLink}?text=Olá!%20Eu%20gostaria%20de%20fazer%20um%20pedido%20na%20${siteConfig.businessName}`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Pedir via WhatsApp"
