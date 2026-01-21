@@ -299,7 +299,7 @@ export default function Home() {
         </p>
         <div className="relative mt-8 h-80 w-full overflow-hidden rounded-2xl shadow-lg md:h-[450px]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.7840473891063!2d-46.6565719850228!3d-23.54027788469345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce583f7d6e5d2b%3A0x8f2d5f8f8f8f8f8f!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1678886543210!5m2!1spt-BR!2sbr"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d501.0192842523282!2d-42.6348727021369!3d-5.89921613557894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1768954678933!5m2!1spt-BR!2sbr"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -327,23 +327,23 @@ export default function Home() {
               <MapPin className="h-8 w-8 text-primary" />
               <h3 className="text-xl font-bold">Endereço</h3>
               <p className="text-foreground/70">
-                Rua Real do Comércio, 500
+                Rua do Pé de Pequi, 500
                 <br />
-                Centro, São Paulo - SP
+                Santa Luzia, Água Branca - Pi
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Phone className="h-8 w-8 text-primary" />
               <h3 className="text-xl font-bold">WhatsApp</h3>
-              <p className="text-foreground/70">(11) 99999-9999</p>
+              <p className="text-foreground/70">(86) 99853-2928</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Clock className="h-8 w-8 text-primary" />
               <h3 className="text-xl font-bold">Horário</h3>
               <p className="text-foreground/70">
-                Seg a Sáb: 10h às 22h
+                Seg a Sáb: 07h às 18h
                 <br />
-                Dom: 16h às 22h
+                Dom: 8h às 12h
               </p>
             </div>
           </div>
