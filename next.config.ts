@@ -1,3 +1,5 @@
+// LP_Gordo_Salgados/next.config.ts
+
 import { withSentryConfig } from '@sentry/nextjs';
 import type {NextConfig} from 'next';
 
